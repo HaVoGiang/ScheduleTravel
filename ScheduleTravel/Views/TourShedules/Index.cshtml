@@ -1,0 +1,41 @@
+﻿@using ScheduleTravel.Models
+@model List<TourSchedule>
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="~/Content/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="sort-table">
+        <ol id="list-data" hidden>
+            @foreach (var item in Model)
+            {
+            <li data-id="@item.Id" data-tourid="@item.TourId" data-scheduleid="@item.ScheduleId" data-sortbyday="@item.SortByDay" data-title="@item.Tour.Title" data-timestart="@item.TimeStart" data-timein="@item.TimeIn" data-timefree="@item.TimeFree">
+                Nơi
+                đến: @item.Tour.Title, Thời gian bắt đầu: <input class="txtTimeStart" style="width: 40px;" type="number"
+                                                                 value="@item.TimeStart">h, Thời gian lưu trú: <input class="txtTimeIn" style="width: 40px;" type="number"
+                                                                                                        value="@item.TimeIn">h <button onclick="btnSubmit(0,0)" type="button">Ok</button>
+            </li>
+            }
+
+        </ol>
+    </div>
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    <script src='~/Scripts/jquery-sortable.js'></script>
+    <script src="~/Scripts/myscripts.js"></script>
+    <!-- <script src="Sortable.js"></script> -->
+</body>
+
+</html>
